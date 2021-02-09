@@ -1,0 +1,18 @@
+artify renders lines of text mirrored around a separator
+  renders an empty PRE when the data is empty
+    √ PASS: returns a DOM element
+    √ PASS: the element is a PRE tag
+    √ PASS: with empty innerHTML
+  when there is a separator and no lines, render an empty PRE
+    √ PASS: returns a DOM element
+    √ PASS: the element is a PRE tag
+    √ PASS: with empty innerHTML
+  when there is no separator, render mirrored lines separated by two spaces
+    √ PASS: returns a DOM element
+    √ PASS: the element is a PRE tag
+    √ PASS: correct innerHTML
+  when there are lines and a separator, render it all!
+    √ PASS: returns a DOM element
+    √ PASS: the element is a PRE tag
+    √ PASS: correct innerHTML
+

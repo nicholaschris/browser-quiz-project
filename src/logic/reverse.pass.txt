@@ -1,0 +1,4 @@
+reverseLogic reverses a string
+  √ PASS: "toads" -> "sdaot"
+  √ PASS: "sdaot" -> "toads"
+
