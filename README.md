@@ -1,42 +1,62 @@
-> ...
-
-## Getting Started
+# Getting Started
 
 This repository comes with some nice extras like testing, documentation and CI, but in it's heart it's just an HTML/CSS/JS website boilerplate.
 
-### Development
+## Development
 
 To run this project locally you will need to open `index.html` in your browser using a local server. LiveServer, `http-server`, `study-lenses`, or any other local static server will work.
 
-### Deployment
+## Installing Dependencies
 
-Push your changes, turn on GitHub pages, that's all!
-
-When your project is deployed to GitHub pages there will be buttons rendered at the top of your page to validate your HTML, CSS, accessibility and spelling, plus a link back to the project repository.
-
-### Installing Dependencies
-
-There are no dependencies needed to run the website, everything is prepared to work with vanilla JavaScript. However, if you want to run tests or if you want to generate documentation for your project you will need to install the development dependencies:
+There are no dependencies needed to run the website, everything is prepared to work with vanilla JavaScript. However, if you want to install prettier for this project then run (generally you always want to do this if you see a `package.json` file):
 
 - `npm install`
 
-### Documentation
+## Starter files
 
-To document your project you will need to write a JSDoc comment for each function in the `/handlers`, `/listeners` and `/logic`. You will also want to add an entry to the JSDoc in `/data.js` for each property you store in the object.
+You will notice some starter code. This is a suggestion, but feel free to change what you want to, this is your project after all!
 
-The JSDoc comments you write in the `/src` folder will be used to re-write the `DOCS.md` file each time you run `npm run document` from the root of your project.
+# Backlog
 
-### Testing
+So what should be built? Below is a collection of user stories you can choose from. Stories inside of each priority level are not necessarily in order, it's up to your group to decide how they fit into your strategy. These are also just suggestion, feel free to change them or create your own! Feel free to get creative.
 
-After installing the dev dependencies you can start writing and running tests for your .js files. Careful! In this project starter you can only test code that does not interact with the DOM, so only the `/logic` and `/view` functions will be testable (`/view` functions will be tested in Node.js using `jsdom`). There are two options for running tests:
+## Must-Haves
 
-- _Individually_: You can run the tests in a single `.spec.js` using the VSCode debugger. Open the spec file you want to run, open the debugger pane, select the "current .spec.js file" option, then start debugging!
-- _All at Once_: You can also run every `.spec.js` in the `/src` directory at the same time using `npm run test`. When you run the `npm run test` command all test results will be logged to the console, and a report file will be generated next to each spec file. These report files will be helpful when reviewing PRs to the `main`/`master` branch.
+> these are necessary for basic usability
 
-### Continuous Integration
+- [ ] A user can see all questions
+  - _acceptance criteria ..._
+- [ ] A user can select an answer for each question
+  - _acceptance criteria ..._
+- [ ] A user can know which questions they got correct and incorrect
+  - _acceptance criteria ..._
+- [ ] A user can see the correct answer for questions
+  - _acceptance criteria ..._
+- [ ] A user can see their score at the end of the quiz
+  - _acceptance criteria ..._
 
-This repository comes with a GitHub Action to re-build the documentation and run all the tests whenever you push to `master`/`main`, and each time you open a PR to `master`/`main`. You don't need to do anything, it works!
+## Should-Haves
 
-Having this CI action means that your master branch will always have the most up-to-date documentation, and that you can easily check test results when reviewing Pull Requests.
+> these will complete the user experience, but are not necessary
 
-> ...
+- [ ] A user can see one question at a time, stepping through the quiz (may require refactoring)
+  - _acceptance criteria ..._
+- [ ] A user can "cheat" to see the correct answer, this forfeits the question
+  - _acceptance criteria ..._
+- [ ] A user has access to resources for further study on each question
+  - _acceptance criteria ..._
+- [ ] A user can see their score update in real-time as they select answers
+  - _acceptance criteria ..._
+
+## Could-Haves
+
+> would be really cool ... if there's time
+
+- [ ] A user can modify a question in the quiz
+  - _acceptance criteria ..._
+- [ ] A user can remove questions from the quiz
+  - _acceptance criteria ..._
+- [ ] A user can add questions to the quiz
+  - _acceptance criteria ..._
+
+
