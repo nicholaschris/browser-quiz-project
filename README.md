@@ -16,6 +16,12 @@ There are no dependencies needed to run the website, everything is prepared to w
 
 You will notice some starter code. This is a suggestion, but feel free to change what you want to, this is your project after all!
 
+## Documentation
+
+To document your project you will need to write a JSDoc comment for each function in the /handlers, /listeners and /logic. You will also want to add an entry to the JSDoc in /data.js for each property you store in the object.
+
+The JSDoc comments you write in the /src folder will be used to re-write the DOCS.md file each time you run npm run document from the root of your project.
+
 # Backlog
 
 So what should be built? Below is a collection of user stories you can choose from. Stories inside of each priority level are not necessarily in order, it's up to your group to decide how they fit into your strategy. These are also just suggestion, feel free to change them or create your own! Feel free to get creative.
