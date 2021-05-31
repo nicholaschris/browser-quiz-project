@@ -47,29 +47,22 @@ So what should be built? Below is a collection of user stories you can choose fr
 
 > these are necessary for basic usability
 
-- [ ] A user can see all questions
+- [ ] A user can see one question at a time, stepping through the quiz
   - _acceptance criteria ..._
 - [ ] A user can select an answer for each question
   - _acceptance criteria ..._
-- [ ] A user can know which questions they got correct and incorrect
+- [ ] A user can know which questions they got correct and incorrect (either immediately or at the end of the quiz)
   - _acceptance criteria ..._
-- [ ] A user can see the correct answer for questions
+- [ ] A user can see the correct answer for questions (either immediately or at the end of the quiz)
   - _acceptance criteria ..._
 - [ ] A user can see their score at the end of the quiz
-  - _acceptance criteria ..._
-
-## Should-Haves
-
-> these will complete the user experience, but are not necessary
-
-- [ ] A user can see one question at a time, stepping through the quiz (may require refactoring)
   - _acceptance criteria ..._
 - [ ] A user can see their score update in real-time as they select answers
   - _acceptance criteria ..._
 
-## Could-Haves
+## Nice-to-Haves
 
-> would be really cool ... if there's time
+> if time, add more features!
 
 - [ ] A user can modify a question in the quiz
   - _acceptance criteria ..._
@@ -81,5 +74,6 @@ So what should be built? Below is a collection of user stories you can choose fr
   - _acceptance criteria ..._
 - [ ] A user can add questions to the quiz
   - _acceptance criteria ..._
+- [ ] Anything else you can think of... go nuts!
 
 
