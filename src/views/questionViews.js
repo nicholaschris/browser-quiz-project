@@ -6,9 +6,6 @@ import { createDOMElement } from '../utils/DOMUtils.js';
 
 /**
  * Create an Answer element
- *
- * @param {string} answerText - answer text to display
- * @return {HTMLElement}
  */
 export const createAnswerElement = (answerText) => {
   const answerElement = createDOMElement('li');
@@ -17,18 +14,8 @@ export const createAnswerElement = (answerText) => {
   return answerElement;
 };
 
-/** @typedef {text: string,
- *            answers: object,
- *            correct: string,
- *            selected: {null | string},
- *            links: [{text: string, href: string}]} question
- */
-
 /**
  * Create a full question element
- *
- * @param {question} question - see above
- * @return {HTMLElement}
  */
 export const createQuestionElement = (question) => {
   const container = createDOMElement('div');
@@ -50,8 +37,6 @@ export const createQuestionElement = (question) => {
 
 /**
  * Creates and returns the next questions button
- *
- * @return {HTMLElement}
  */
 export const createNextQuestionButtonElement = () => {
   const buttonElement = createDOMElement('button', {
