@@ -9,9 +9,6 @@ import { quizData } from '../data.js';
 const initializeQuiz = () => {
   quizData.currentQuestionIndex = 0;
 
-  console.log('bla');
-  setupQuizHTML();
-
   showCurrentQuestion();
 };
 
