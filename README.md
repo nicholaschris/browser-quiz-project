@@ -48,32 +48,21 @@ So what should be built? Below is a collection of user stories you can choose fr
 > these are necessary for basic usability
 
 - [ ] A user can see one question at a time, stepping through the quiz
-  - _acceptance criteria ..._
 - [ ] A user can select an answer for each question
-  - _acceptance criteria ..._
 - [ ] A user can know which questions they got correct and incorrect (either immediately or at the end of the quiz)
-  - _acceptance criteria ..._
 - [ ] A user can see the correct answer for questions (either immediately or at the end of the quiz)
-  - _acceptance criteria ..._
 - [ ] A user can see their score at the end of the quiz
-  - _acceptance criteria ..._
-- [ ] A user can see their score update in real-time as they select answers
-  - _acceptance criteria ..._
 
 ## Nice-to-Haves
 
 > if time, add more features!
 
+- [ ] A user can see their score update in real-time as they select answers
 - [ ] A user can modify a question in the quiz
-  - _acceptance criteria ..._
 - [ ] A user has access to resources for further study on each question
-  - _acceptance criteria ..._
 - [ ] A user can "cheat" to see the correct answer, this forfeits the question
-  - _acceptance criteria ..._
 - [ ] A user can remove questions from the quiz
-  - _acceptance criteria ..._
 - [ ] A user can add questions to the quiz
-  - _acceptance criteria ..._
 - [ ] Anything else you can think of... go nuts!
 
 
