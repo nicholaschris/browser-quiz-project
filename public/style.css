@@ -11,3 +11,7 @@
   max-height: 80vh;
   overflow: auto;
 }
+
+ul {
+  list-style: none;
+}
