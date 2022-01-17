@@ -1,6 +1,8 @@
 # Views
 
-View functions are pure functions used to render JS data into DOM elements. They take primitives, objects or arrays as arguments and they return primitives, objects or arrays. Handlers will use view functions to render program state and update the UI.
+View functions are pure functions used to render JS data into DOM elements.
+They take primitives, objects or arrays as arguments and they return Elements only.
+Pages will use view functions to render program state and update the UI.
 
 VIEW functions will _never_ ...
 

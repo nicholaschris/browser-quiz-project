@@ -21,23 +21,23 @@ Let's run through the folders:
 ```
 public
 src
-└── handlers
-└── init
-└── listeners
-└── utils
+└── pages
 └── views
+└── app.js
+└── constants.js
 └── data.js
+└── router.js
 index.html
 ```
 
 - `public` this contains the static files that can be used by our `index.html` file
 - `src` this contains all of our JavaScript code
-- `handlers` this contains our functions that handle user interactions. You can also see it as the code that processes and updates the data or DOM
-- `init` this contains our initialisation code. Generally this code should only run once and starts the application
-- `listeners` this contains our code that links up our handler code to the DOM. This is separate because it is possible to have the same handler code be given to different listeners
-- `utils` this contains code that are pure functions and can be used throughout the application. These functions take data and give back a result. They should not interact with anything outside of their scope!
-- `views` this contains code to define what the DOM will look like. They will create the DOM element and give it back. They should never read from/write to the dom, that is what the handlers do.
+ - `pages` this folder contains our functions that handle user interactions. You can also see it as the code that processes and updates the data or DOM
+  it also contains our code that links up our handler code to the DOM.
+ - `views` this contains code to define what the DOM will look like. They will create the DOM element and give it back. They should never read from/write to the dom, that is what the pages do.
+- `app.js` this file our initialisation code. Generally this code should only run once and starts the application
 - `data.js` this is our data model. Anything we need to store in the browser we place inside the data file
+- `router.js` this file will transition the app from one page to the other and clear the HTML.
 
 # Backlog
 
@@ -47,7 +47,7 @@ So what should be built? Below is a collection of user stories you can choose fr
 
 > these are necessary for basic usability
 
-- [ ] A user can see one question at a time, stepping through the quiz
+- [x] A user can see one question at a time, stepping through the quiz
 - [ ] A user can select an answer for each question
 - [ ] A user can know which questions they got correct and incorrect (either immediately or at the end of the quiz)
 - [ ] A user can see the correct answer for questions (either immediately or at the end of the quiz)
@@ -58,11 +58,12 @@ So what should be built? Below is a collection of user stories you can choose fr
 > if time, add more features!
 
 - [ ] A user can see their score update in real-time as they select answers
-- [ ] A user can modify a question in the quiz
+- [ ] A user can refresh the page and still have his/her given answers available
 - [ ] A user has access to resources for further study on each question
 - [ ] A user can "cheat" to see the correct answer, this forfeits the question
-- [ ] A user can remove questions from the quiz
-- [ ] A user can add questions to the quiz
+- [ ] A user can get more points for fast answers (if your quiz works like a test)
+- [ ] A user can learn the about the correct answer and look into resources (if your quiz is more educational)
+- [ ] Transition between pages or question look fancy like TypeForm for example
 - [ ] Anything else you can think of... go nuts!
 
 

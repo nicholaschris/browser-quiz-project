@@ -1,6 +1,6 @@
-# Handlers
+# Pages
 
-Handler function define user interactions. They will:
+Page files define user interactions per page. They will:
 
 - read user input from events and from the DOM
 - read and modify program data variables
