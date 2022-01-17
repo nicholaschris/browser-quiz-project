@@ -14,11 +14,10 @@ export const getQuestionElement = (question) => {
   element.innerHTML = String.raw`
     <h1>${question}</h1>
 
-    <ul id="${ANSWERS_LIST_ID}">
-    </ul>
+    <ul id="${ANSWERS_LIST_ID}"></ul>
 
     <button id="${NEXT_QUESTION_BUTTON_ID}">
-    Next question
+      Next question
     </button>
   `;
 
