@@ -37,31 +37,32 @@ index.html
 - `app.js` this file our initialisation code. Generally this code should only run once and starts the application
 - `data.js` this is our data model. Anything we need to store in the browser we place inside the data file
 
-# Backlog
+# Goal and Backlog
 
 So what should be built? Below is a collection of user stories you can choose from. Stories inside of each priority level are not necessarily in order, it's up to your group to decide how they fit into your strategy. These are also just suggestion, feel free to change them or create your own! Feel free to get creative.
 
-## Must-Haves
+Choose a desired end result at the start of the project.
+By choosing an existing example, the goal of the project will be clear to everyone in the team.
+Another benefit is that it will be easier to come up with the necessary tasks to create your quiz.
 
-> these are necessary for basic usability
+Some examples of online quizes that you might like:
+- https://quiza.nl/raad-de-chips
+- https://wwbm.com/
+- https://www.typeform.com/templates/t/trivia/
+- https://lovattspuzzles.com/online-puzzles-competitions/ultimate-online-trivia-quiz/
 
-- [x] A user can see one question at a time, stepping through the quiz
-- [ ] A user can select an answer for each question
-- [ ] A user can know which questions they got correct and incorrect (either immediately or at the end of the quiz)
-- [ ] A user can see the correct answer for questions (either immediately or at the end of the quiz)
-- [ ] A user can see their score at the end of the quiz
+When you have chosen your goal, you can create tasks as issues on Github and assign them to team members.
+Tasks could look like this, using the [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) labels for prioritization
 
-## Nice-to-Haves
+- [x] (must have) A user can see one question at a time, stepping through the quiz
+- [ ] (must have) A user can select an answer for each question
+- [ ] (must have) Change the <title>
+- [ ] (must have) add a favicon
+- [ ] (should have) A user can see what the correct answer is after they selected their answer.
+- [ ] (should have) A user can see their score update in real-time as they select answers
+- [ ] (should have) A user can refresh the page and still have his/her given answers available
+- [ ] (could have) A user can "skip" the question and learn the correct answer, this forfeits the question
+- [ ] (could have) Transition between pages or question look fancy like TypeForm for example
 
-> if time, add more features!
-
-- [ ] A user can see their score update in real-time as they select answers
-- [ ] A user can refresh the page and still have his/her given answers available
-- [ ] A user has access to resources for further study on each question
-- [ ] A user can "cheat" to see the correct answer, this forfeits the question
-- [ ] A user can get more points for fast answers (if your quiz works like a test)
-- [ ] A user can learn the about the correct answer and look into resources (if your quiz is more educational)
-- [ ] Transition between pages or question look fancy like TypeForm for example
-- [ ] Anything else you can think of... go nuts!
-
-
+You should create tasks that fit with your goal, these tasks serve just as an example. 
+Anything else you can think of... go nuts!
