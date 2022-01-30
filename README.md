@@ -37,7 +37,6 @@ index.html
  - `views` this contains code to define what the DOM will look like. They will create the DOM element and give it back. They should never read from/write to the dom, that is what the pages do.
 - `app.js` this file our initialisation code. Generally this code should only run once and starts the application
 - `data.js` this is our data model. Anything we need to store in the browser we place inside the data file
-- `router.js` this file will transition the app from one page to the other and clear the HTML.
 
 # Backlog
 
