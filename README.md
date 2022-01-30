@@ -26,7 +26,6 @@ src
 └── app.js
 └── constants.js
 └── data.js
-└── router.js
 index.html
 ```
 
