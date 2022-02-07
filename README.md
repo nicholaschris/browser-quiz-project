@@ -52,10 +52,11 @@ Another benefit is that it will be easier to come up with the necessary tasks to
 
 Some examples of online quizes that you might like:
 
-- https://quiza.nl/raad-de-chips
 - https://wwbm.com/
 - https://www.typeform.com/templates/t/trivia/
 - https://lovattspuzzles.com/online-puzzles-competitions/ultimate-online-trivia-quiz/
+- https://www.lenstore.co.uk/vc/colour-is-in-the-eye-of-the-beholder/#/game
+- https://heywise.com/quiz/lets-find-out-if-you-follow-gordon-ramsay/1/
 
 When you have chosen your goal, you can create tasks as issues on Github and assign them to team members.
 Tasks could look like this, using the [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) labels for prioritization
