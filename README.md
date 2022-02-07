@@ -16,6 +16,11 @@ There are no dependencies needed to run the website, everything is prepared to w
 
 # Structure
 
+Instead of writing all code in a single JavaScript file, we want you to split your code over several files.
+The structure of this project is explained in the next video
+
+[![Project Structure YouTube Video](https://i.imgur.com/hDcLYFt.png)](https://youtu.be/bysBqtSKBpQ)
+
 Let's run through the folders:
 
 ```
@@ -26,44 +31,43 @@ src
 └── app.js
 └── constants.js
 └── data.js
-└── router.js
 index.html
 ```
 
 - `public` this contains the static files that can be used by our `index.html` file
 - `src` this contains all of our JavaScript code
- - `pages` this folder contains our functions that handle user interactions. You can also see it as the code that processes and updates the data or DOM
-  it also contains our code that links up our handler code to the DOM.
- - `views` this contains code to define what the DOM will look like. They will create the DOM element and give it back. They should never read from/write to the dom, that is what the pages do.
-- `app.js` this file our initialisation code. Generally this code should only run once and starts the application
-- `data.js` this is our data model. Anything we need to store in the browser we place inside the data file
-- `router.js` this file will transition the app from one page to the other and clear the HTML.
+  - `pages` this folder contains our functions that handle user interactions. You can also see it as the code that processes and updates the data or DOM
+    it also contains our code that links up our handler code to the DOM.
+  - `views` this contains code to define what the DOM will look like. They will create the DOM element and give it back. They should never read from/write to the dom, that is what the pages do.
+  - `app.js` this file our initialisation code. Generally this code should only run once and starts the application
+  - `data.js` this is our data model. Anything we need to store in the browser we place inside the data file
 
-# Backlog
+# Goal and Backlog
 
 So what should be built? Below is a collection of user stories you can choose from. Stories inside of each priority level are not necessarily in order, it's up to your group to decide how they fit into your strategy. These are also just suggestion, feel free to change them or create your own! Feel free to get creative.
 
-## Must-Haves
+Choose a desired end result at the start of the project.
+By choosing an existing example, the goal of the project will be clear to everyone in the team.
+Another benefit is that it will be easier to come up with the necessary tasks to create your quiz.
 
-> these are necessary for basic usability
+Some examples of online quizes that you might like:
 
-- [x] A user can see one question at a time, stepping through the quiz
-- [ ] A user can select an answer for each question
-- [ ] A user can know which questions they got correct and incorrect (either immediately or at the end of the quiz)
-- [ ] A user can see the correct answer for questions (either immediately or at the end of the quiz)
-- [ ] A user can see their score at the end of the quiz
+- https://quiza.nl/raad-de-chips
+- https://wwbm.com/
+- https://www.typeform.com/templates/t/trivia/
+- https://lovattspuzzles.com/online-puzzles-competitions/ultimate-online-trivia-quiz/
 
-## Nice-to-Haves
+When you have chosen your goal, you can create tasks as issues on Github and assign them to team members.
+Tasks could look like this, using the [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) labels for prioritization
 
-> if time, add more features!
+- [x] (must have) A user can see one question at a time, stepping through the quiz
+- [ ] (must have) A user can select an answer for each question
+- [ ] (must have) Change the <title>
+- [ ] (must have) add a favicon
+- [ ] (should have) A user can see what the correct answer is after they selected their answer.
+- [ ] (should have) A user can see their score update in real-time as they select answers
+- [ ] (should have) A user can refresh the page and still have his/her given answers available
+- [ ] (could have) A user can "skip" the question and learn the correct answer, this forfeits the question
+- [ ] (could have) Transition between pages or question look fancy like TypeForm for example
 
-- [ ] A user can see their score update in real-time as they select answers
-- [ ] A user can refresh the page and still have his/her given answers available
-- [ ] A user has access to resources for further study on each question
-- [ ] A user can "cheat" to see the correct answer, this forfeits the question
-- [ ] A user can get more points for fast answers (if your quiz works like a test)
-- [ ] A user can learn the about the correct answer and look into resources (if your quiz is more educational)
-- [ ] Transition between pages or question look fancy like TypeForm for example
-- [ ] Anything else you can think of... go nuts!
-
-
+You should create tasks that fit with your goal, these tasks serve just as an example.
