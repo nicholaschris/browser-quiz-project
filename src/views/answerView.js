@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Create an Answer element
  * @returns {Element}

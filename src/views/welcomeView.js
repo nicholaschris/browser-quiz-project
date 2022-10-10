@@ -1,5 +1,3 @@
-'use strict';
-
 import { START_QUIZ_BUTTON_ID } from '../constants.js';
 
 /**
