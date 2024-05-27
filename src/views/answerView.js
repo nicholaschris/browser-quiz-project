@@ -1,3 +1,5 @@
+//src/views/answerView.js
+
 /**
  * Create an Answer element
  * @returns {Element}

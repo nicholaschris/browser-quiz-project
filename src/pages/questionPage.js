@@ -1,3 +1,5 @@
+//src/pages/questionPage.js
+
 import {
   ANSWERS_LIST_ID,
   NEXT_QUESTION_BUTTON_ID,

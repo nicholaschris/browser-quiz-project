@@ -1,3 +1,5 @@
+/* public/style.css */
+
 body {
   background-color: blueviolet;
 }
@@ -17,4 +19,8 @@ body {
 
 ul {
   list-style: none;
+}
+
+ul li:hover {
+  background-color: yellow; /*highlight answers on hover */
 }

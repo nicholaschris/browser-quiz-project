@@ -1,3 +1,5 @@
+//src/data.js
+
 /* Program Data
 
   in this file you can declare variables to store important data for your program

@@ -1,3 +1,5 @@
+//src/constants.js
+
 /*
  The constants file is used to store anything 
  that multiple files use, that should ALWAYS be the same
