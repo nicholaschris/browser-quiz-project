@@ -1,3 +1,6 @@
+body {
+  background-color: blueviolet;
+}
 .centered {
   position: fixed;
   top: 50%;
