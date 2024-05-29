@@ -23,6 +23,13 @@ export const initQuestionPage = () => {
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
+  //create element to show the score
+
+  const scoreElement = document.createElement('h2')
+  scoreElement.id = 'score'
+  scoreElement.textContent = `Score: 0 out of ${quizData.questions.length}`
+  userInterface.appendChild(scoreElement)
+
 
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
@@ -64,6 +71,7 @@ const nextQuestion = () => {
 
 
   initQuestionPage();
+  calculateScore();
 };
 
 
@@ -86,3 +94,23 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
     }
   })
 };
+
+// adding a function to calculate the score
+
+const calculateScore = () => {
+  let score = 0
+  let totalScore = quizData.questions.length
+  for (const question of quizData.questions){
+    if(question.selected === question.correct){
+      score++
+    }
+  }
+  displayScore(score, totalScore)
+}
+
+// adding a function to display the score
+
+const displayScore = (score, totalScore) => {
+  const scoreElement = document.getElementById('score')
+  scoreElement.textContent = `Score: ${score} out of ${totalScore}`
+}

@@ -57,5 +57,18 @@ export const quizData = {
       ],
     },
     // Add more questions here
+    {
+      text: 'Who is the oldest jedi master?',
+      answers: {
+        a: 'Yoda',
+        b: 'Count Doku',
+        c: 'Obi-Wan Kenobi',
+        d: 'Mace Windu',
+      },
+      correct: 'a',
+      selected: null,
+      links: [
+      ],
+    },
   ],
 };
