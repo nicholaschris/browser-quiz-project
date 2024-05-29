@@ -1,4 +1,5 @@
-import { ANSWERS_LIST_ID } from '../constants.js';
+//src/views/questionView.js
+import {ANSWERS_LIST_ID} from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
 
 /**
