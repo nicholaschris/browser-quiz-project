@@ -4,6 +4,7 @@ import {
   NEXT_QUESTION_BUTTON_ID,
   DEFAULT_ANSWER_COLOR,
   USER_INTERFACE_ID,
+  SKIP_BUTTON_ID,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
@@ -28,17 +29,8 @@ export const initQuestionPage = () => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
-
-  // const answerElement = document.getElementById(correctAnswer) /**/
-  // answerElement.addEventListener('click', (event)  => {
-  //   quizData.questions[quizData.currentQuestionIndex].selected = event.target.id //set "selected" value of an object to the answer id clicked by user
-  //
-  // })
-
-  /*Listens to click event and changes the color of the answer button
-  * if the answer clicked is correct - paints selected answer green,
-  * otherwise - paints the selected answer red and the correct answer - green*/
-  const answers = answersListElement.querySelectorAll('button');
+  
+   const answers = answersListElement.querySelectorAll('button');
   answers.forEach(answer => {
     answer.addEventListener('click', (event) =>{
       const selectedAnswerKey = event.target.id;
@@ -51,9 +43,30 @@ export const initQuestionPage = () => {
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
+
+    document
+    .getElementById(SKIP_BUTTON_ID) // Add click event for "skip" button
+    .addEventListener('click', skipQuestion); // Call functionality when "skip" button is clicked
 };
 
-const nextQuestion = () => {
+  const skipQuestion = () => {
+  const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
+  const correctAnswer = currentQuestion.correct;
+
+  const answerElement = document.createElement('p');
+  answerElement.textContent = `Correct answer is: ${correctAnswer}`;
+  document.getElementById(USER_INTERFACE_ID).appendChild(answerElement);
+
+  // To remove the question from scoring when you skip it
+  currentQuestion.skipped = true; // Mark question as skipped
+  
+  setTimeout(() => {
+  nextQuestion();
+  }, 2000);
+
+}
+
+ const nextQuestion = () => {
   if (quizData.currentQuestionIndex === quizData.questions.length-1){
     console.log("end of quiz") // to do: add the final page for the final score
   }
@@ -61,10 +74,10 @@ const nextQuestion = () => {
     quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
   }
 
-
-
   initQuestionPage();
-};
+ };
+
+
 
 
 const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
