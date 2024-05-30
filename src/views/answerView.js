@@ -9,6 +9,7 @@ export const createAnswerElement = (key, answerText) => {
   element.appendChild(btn);
   btn.textContent = `${answerText}`;
   btn.id = key;
+  btn.className = 'answer';
   btn.addEventListener(`click`, () => {
     btn.style.backgroundColor = `#B76E79`;
   })
