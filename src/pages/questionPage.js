@@ -60,7 +60,7 @@ export const initQuestionPage = () => {
     .addEventListener('click', skipQuestion); // Call functionality when "skip" button is clicked
 };
 
-  // This function allows the user to skip a question
+   // This function allows the user to skip a question
   const skipQuestion = () => {
   // To remove the question from scoring when you skip it  
    const currentQuestion = quizData.questions[quizData.currentQuestionIndex];  
@@ -73,24 +73,23 @@ export const initQuestionPage = () => {
     answer.style.backgroundColor = 'green'; 
     answer.disabled = false; // Enable only the correct answer to be clickable
   } else {
-    answer.style.backgroundColor = DEFAULT_ANSWER_COLOR; // Reset the color of other answers to default
     answer.disabled = true; // Disable the clickability of other options
     }
   });
 
-  // Hide the Skip button
+   // Hide the Skip button
    hideSkipButton();
 };
 
   // Function to hide the Skip button
-const hideSkipButton = () => {
+  const hideSkipButton = () => {
   const skipButton = document.getElementById(SKIP_BUTTON_ID);
   if (skipButton) {
-    skipButton.style.display = 'none';
+    skipButton.classList.add('hidden');
   }
 };
 
- const nextQuestion = () => {
+  const nextQuestion = () => {
   if (quizData.currentQuestionIndex === quizData.questions.length-1){
     console.log("end of quiz") // to do: add the final page for the final score
   }
