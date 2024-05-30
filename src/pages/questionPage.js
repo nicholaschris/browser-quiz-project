@@ -44,8 +44,12 @@ export const initQuestionPage = () => {
       quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
 
       checkAnswer(selectedAnswerKey, correctAnswer, answers)
-    })
-  })
+
+  // Hide the Skip button when an answer is selected
+  hideSkipButton();
+
+    });
+  });
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
@@ -55,32 +59,37 @@ export const initQuestionPage = () => {
     .getElementById(SKIP_BUTTON_ID) // Add click event for "skip" button
     .addEventListener('click', skipQuestion); // Call functionality when "skip" button is clicked
 };
-// This function allows the user to skip a question
+
+   // This function allows the user to skip a question
   const skipQuestion = () => {
-  const currentQuestion = quizData.questions[quizData.currentQuestionIndex];  
+  // To remove the question from scoring when you skip it  
+   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];  
+   currentQuestion.skipped = true; // Marks question as skipped
 
-  if (currentQuestion.selected) {
-    // If the user has already answered the question, skip button should be disabled
-    console.log('User has already answered the question. Skip button disabled.');
-    return;
+  // Highlight the correct answer with green color
+  const answers = document.getElementById(ANSWERS_LIST_ID).querySelectorAll('button');
+  answers.forEach(answer => {
+  if (answer.id === currentQuestion.correct) {
+    answer.style.backgroundColor = 'green'; 
+    answer.disabled = false; // Enable only the correct answer to be clickable
+  } else {
+    answer.disabled = true; // Disable the clickability of other options
+    }
+  });
+
+   // Hide the Skip button
+   hideSkipButton();
+};
+
+  // Function to hide the Skip button
+  const hideSkipButton = () => {
+  const skipButton = document.getElementById(SKIP_BUTTON_ID);
+  if (skipButton) {
+    skipButton.classList.add('hidden');
   }
+};
 
-  const correctAnswer = currentQuestion.correct;
-  const answerElement = document.createElement('p');
-  answerElement.textContent = `Correct answer is: ${correctAnswer}`;
-  const userInterface = document.getElementById(USER_INTERFACE_ID);
-  userInterface.appendChild(answerElement);
-
-  // To remove the question from scoring when you skip it
-  currentQuestion.skipped = true; // Marks question as skipped
-  
-  setTimeout(() => {
-  nextQuestion();
-  }, 2000);
-
-}
-
- const nextQuestion = () => {
+  const nextQuestion = () => {
   if (quizData.currentQuestionIndex === quizData.questions.length-1){
     console.log("end of quiz") // to do: add the final page for the final score
   }
