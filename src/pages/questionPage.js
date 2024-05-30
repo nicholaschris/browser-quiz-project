@@ -48,17 +48,24 @@ export const initQuestionPage = () => {
     .getElementById(SKIP_BUTTON_ID) // Add click event for "skip" button
     .addEventListener('click', skipQuestion); // Call functionality when "skip" button is clicked
 };
-
+// This function allows the user to skip a question
   const skipQuestion = () => {
-  const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
-  const correctAnswer = currentQuestion.correct;
+  const currentQuestion = quizData.questions[quizData.currentQuestionIndex];  
 
+  if (currentQuestion.selected) {
+    // If the user has already answered the question, skip button should be disabled
+    console.log('User has already answered the question. Skip button disabled.');
+    return;
+  }
+
+  const correctAnswer = currentQuestion.correct;
   const answerElement = document.createElement('p');
   answerElement.textContent = `Correct answer is: ${correctAnswer}`;
-  document.getElementById(USER_INTERFACE_ID).appendChild(answerElement);
+  const userInterface = document.getElementById(USER_INTERFACE_ID);
+  userInterface.appendChild(answerElement);
 
   // To remove the question from scoring when you skip it
-  currentQuestion.skipped = true; // Mark question as skipped
+  currentQuestion.skipped = true; // Marks question as skipped
   
   setTimeout(() => {
   nextQuestion();
