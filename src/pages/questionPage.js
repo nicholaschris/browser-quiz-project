@@ -9,6 +9,7 @@ import {
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
+import { createScoreElement } from '../views/scoreView.js'
 
 export const initQuestionPage = () => {
   console.log(quizData)
@@ -25,10 +26,7 @@ export const initQuestionPage = () => {
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
   //create element to show the score
-
-  const scoreElement = document.createElement('h2')
-  scoreElement.id = 'score'
-  scoreElement.textContent = `Score: 0 out of ${quizData.questions.length}`
+  const scoreElement = createScoreElement(quizData.currentScore, quizData.questions.length)
   userInterface.appendChild(scoreElement)
 
 
@@ -36,7 +34,6 @@ export const initQuestionPage = () => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
-  
    const answers = answersListElement.querySelectorAll('button');
   answers.forEach(answer => {
     answer.addEventListener('click', (event) =>{
@@ -98,15 +95,15 @@ export const initQuestionPage = () => {
   }
 
   initQuestionPage();
-  calculateScore();
 };
-
 
 const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   const isCorrect = selectedAnswer === correctAnswer;
 
   if (isCorrect) {
     console.log(`here's the logic if user clicked on correct answer`);
+    quizData.currentScore++
+    displayScore()
   } else {
     console.log(`here's the logic if user clicked on wrong answer`);
   }
@@ -122,22 +119,6 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   })
 };
 
-// adding a function to calculate the score
-
-const calculateScore = () => {
-  let score = 0
-  let totalScore = quizData.questions.length
-  for (const question of quizData.questions){
-    if(question.selected === question.correct){
-      score++
-    }
-  }
-  displayScore(score, totalScore)
-}
-
-// adding a function to display the score
-
-const displayScore = (score, totalScore) => {
-  const scoreElement = document.getElementById('score')
-  scoreElement.textContent = `Score: ${score} out of ${totalScore}`
+const displayScore = () => {
+  document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length}`
 }
