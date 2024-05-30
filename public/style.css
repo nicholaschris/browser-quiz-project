@@ -23,6 +23,7 @@ ul {
 }
 
 
+
 /*Pattern animation--------------------------------------------------------------------------------------------*/
 body::before {
   --size: 150vmax;
@@ -122,3 +123,6 @@ body::before {
   margin: 10px;
 }
 
+.hidden {
+  display: none;
+}

@@ -1,6 +1,8 @@
 //src/views/questionView.js
-import {ANSWERS_LIST_ID} from '../constants.js';
-import { NEXT_QUESTION_BUTTON_ID, QUESTION_DIV_ID } from '../constants.js';
+
+
+import { NEXT_QUESTION_BUTTON_ID, QUESTION_DIV_ID, ANSWERS_LIST_ID, SKIP_BUTTON_ID } from '../constants.js';
+
 
 /**
  * Create a full question element
@@ -11,6 +13,7 @@ export const createQuestionElement = (question) => {
   element.id = QUESTION_DIV_ID;
   // I use String.raw just to get fancy colors for the HTML in VS Code.
   element.innerHTML = String.raw`
+
     <div id="border-inner-container">
       <div id="score">
           🏆score
@@ -33,7 +36,7 @@ export const createQuestionElement = (question) => {
         <button id="${NEXT_QUESTION_BUTTON_ID}" class="action-button">
           Next question
         </button>
-        <button id="skip" class="action-button">
+        <button id="${SKIP_BUTTON_ID}" class="action-button">
           Skip
         </button>
       </div>
