@@ -54,17 +54,13 @@ body::before {
 
 /*Content block styling-------------------------------------------------------------------------*/
 #question-block {
-  /*position: relative; /* makes sure question block is on top of the pattern animation */
-  /*z-index: 1;*/
   display: flex;
   flex-direction: column;
   width: 500px;
   height: 100%;
   background-color: #C1FF69;
-  /*background-color: rgba(0, 0, 255, 0.95);*/
   border-radius: 20px;
   border: 10px solid #C1FF69;
-  /*padding: 10px;*/
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -103,9 +99,6 @@ body::before {
 /*Score----------------------------------------------------------------------------------------*/
 #score {
 
-
-  top: 20px;
-  right: 20px;
 }
 
 

@@ -11,7 +11,6 @@ export const ANSWERS_LIST_ID = 'answers-list';
 export const NEXT_QUESTION_BUTTON_ID = 'next-question-button';
 
 
-export const DEFAULT_ANSWER_COLOR = 'white';
 export const QUESTION_DIV_ID = 'question-block'
 
 export const SKIP_BUTTON_ID = 'skip-button';
