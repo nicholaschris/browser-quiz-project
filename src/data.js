@@ -16,57 +16,127 @@ export const quizData = {
   // the questions in the quiz
   questions: [
     {
-      text: 'What are the different ways to declare a JS variable?',
+      text: `Who is Luke Skywalker's father?`,
       answers: {
-        a: 'constant, let, variable',
-        b: 'var, const, let, function',
-        c: 'var, let, const',
+        a: 'Han Solo',
+        b: 'Darth Vader',
+        c: 'Obi-Wan Kenobi',
+        d: 'Mace Windu'
+      },
+      correct: 'b',
+      selected: null,
+    },
+    {
+      text: `What is the name of Han Solo's ship?`,
+      answers: {
+        a: 'Star Destroyer',
+        b: 'TIE Fighter',
+        c: 'Millennium Falcon',
+        d: 'X-Wing',
       },
       correct: 'c',
       selected: null,
+    },
+    {
+      text: 'Who is the Supreme Leader of the First Order?',
+      answers: {
+        a: 'Master Yoda',
+        b: 'Count Doku',
+        c: 'Darth Sidius',
+        d: 'Snoke',
+      },
+      correct: 'd',
+      selected: null,
       links: [
-        {
-          text: 'javascript.info',
-          href: 'https://javascript.info/variables',
-        },
-        {
-          text: 'Tyler McGinnis',
-          href: 'https://ui.dev/var-let-const/',
-        },
       ],
     },
     {
-      text: 'What does `typeof` do?',
+      text: `What color is Mace Windu's lightsaber?`,
       answers: {
-        a: 'changes the type of a primitive value',
-        b: 'returns a string describing the type of a value',
-        c: 'determines if a value is primitive',
-        d: 'can tell the difference between arrays and objects',
+        a: 'Green',
+        b: 'Purple',
+        c: 'Black',
+        d: 'blue',
       },
       correct: 'b',
       selected: null,
       links: [
-        {
-          text: 'javascript.info',
-          href: 'https://javascript.info/types#type-typeof',
-        },
-        {
-          text: 'MDN',
-          href:
-            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof',
-        },
       ],
     },
-    // Add more questions here
     {
-      text: 'Who is the oldest jedi master?',
+      text: 'Who trained Obi-Wan Kenobi as a Jedi?',
       answers: {
-        a: 'Yoda',
-        b: 'Count Doku',
-        c: 'Obi-Wan Kenobi',
+        a: 'Anakin Skywalker',
+        b: 'Yoda',
+        c: 'Qui-Gon Jinn',
         d: 'Mace Windu',
       },
+      correct: 'c',
+      selected: null,
+      links: [
+      ],
+    },
+    {
+      text: 'What planet is Princess Leia from?',
+      answers: {
+        a: 'Alderaan',
+        b: 'Naboo',
+        c: 'Tatooine',
+        d: 'Endor',
+      },
       correct: 'a',
+      selected: null,
+      links: [
+      ],
+    },
+    {
+      text: `What color is Yoda's lightsaber in "Attack of the Clones"?`,
+      answers: {
+        a: 'Blue',
+        b: 'Green',
+        c: 'Red',
+        d: 'Black',
+      },
+      correct: 'b',
+      selected: null,
+      links: [
+      ],
+    },
+    {
+      text: 'What is the name of the Wookiee co-pilot of the Millennium Falcon?',
+      answers: {
+        a: 'Chewebacca',
+        b: 'Grogu',
+        c: 'Jabba the Hutt',
+        d: 'Lando',
+      },
+      correct: 'a',
+      selected: null,
+      links: [
+      ],
+    },
+    {
+      text: 'What was the purpose of Order 66?',
+      answers: {
+        a: 'To initiate a clone rebellion',
+        b: 'To assassinate Emperor Palpatine',
+        c: 'To Exterminate the Jedi Order',
+        d: 'To begin a peace treaty with the Separatists',
+      },
+      correct: 'c',
+      selected: null,
+      links: [
+      ],
+    },
+    {
+      text: 'Who is the Jedi Master that ordered the creation of the clone army?',
+      answers: {
+        a: 'Yoda',
+        b: 'Qui-Gon Jinn',
+        c: 'Sifo-Dyas',
+        d: 'Mace Windu',
+      },
+      correct: 'c',
       selected: null,
       links: [
       ],

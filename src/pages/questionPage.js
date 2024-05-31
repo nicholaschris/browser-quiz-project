@@ -11,8 +11,11 @@ import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
 import { createScoreElement } from '../views/scoreView.js'
 
-export const initQuestionPage = () => {
-  console.log(quizData)
+export const initQuestionPage = (continueQuiz = false) => {
+
+  if(continueQuiz){
+    loadScore()
+  }
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
@@ -28,12 +31,14 @@ export const initQuestionPage = () => {
   //create element to show the score
   const scoreElement = createScoreElement(quizData.currentScore, quizData.questions.length)
   userInterface.appendChild(scoreElement)
-
-
+  
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
+
+
+
    const answers = answersListElement.querySelectorAll('button');
   answers.forEach(answer => {
     answer.addEventListener('click', (event) =>{
@@ -41,6 +46,9 @@ export const initQuestionPage = () => {
       quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
 
       checkAnswer(selectedAnswerKey, correctAnswer, answers)
+      displayScore()
+      saveScore()
+
 
   // Hide the Skip button when an answer is selected
   hideSkipButton();
@@ -69,9 +77,10 @@ export const initQuestionPage = () => {
   if (answer.id === currentQuestion.correct) {
     answer.style.backgroundColor = 'green'; 
     answer.disabled = false; // Enable only the correct answer to be clickable
-  } else {
+    } else {
     answer.disabled = true; // Disable the clickability of other options
     }
+   
   });
 
    // Hide the Skip button
@@ -93,7 +102,6 @@ export const initQuestionPage = () => {
   else {
     quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
   }
-
   initQuestionPage();
 };
 
@@ -103,11 +111,9 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   if (isCorrect) {
     console.log(`here's the logic if user clicked on correct answer`);
     quizData.currentScore++
-    displayScore()
   } else {
     console.log(`here's the logic if user clicked on wrong answer`);
   }
-
   answers.forEach(answer => {
     if (answer.id === correctAnswer) {
       answer.style.backgroundColor = 'green'; //highlight the correct answer with green
@@ -120,5 +126,29 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
 };
 
 const displayScore = () => {
+  document.getElementById('scoreView').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length}`
   document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length}`
+}
+
+// save score function
+const saveScore = () => {
+  console.log(quizData.currentScore)
+  localStorage.setItem('quizScore', quizData.currentScore);
+  console.log(quizData.currentScore)
+}
+
+// loadScore function
+const loadScore = () => {
+  quizData.currentScore = parseInt(localStorage.getItem('quizScore'));
+}
+// saveIndex progress
+const saveIndex = () => {
+  // console.log(quizData.currentQuestionIndex)
+  localStorage.setItem('currentIndex', quizData.currentQuestionIndex);
+  // console.log(quizData.currentQuestionIndex)
+}
+
+// loadIndex function
+const loadIndex = () => {
+  quizData.currentScore = parseInt(localStorage.getItem('currentIndex'));
 }

@@ -15,4 +15,5 @@ export const QUESTION_DIV_ID = 'question-block'
 
 export const SKIP_BUTTON_ID = 'skip-button';
 export const DEFAULT_ANSWER_COLOR = 'white';
+export const CONTINUE_QUIZ_BUTTON_ID = 'continue-quiz-button';
 
