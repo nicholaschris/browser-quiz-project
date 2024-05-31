@@ -2,7 +2,7 @@
 body {
   /* background-color: blueviolet; */
   font-family: 'Helvetica', Sans-Serif;
-  color: white;
+  color: rgb(212, 209, 209);
 }
 .centered {
   position: fixed;
@@ -119,3 +119,85 @@ body::before {
 .hidden {
   display: none;
 }
+
+
+
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly; 
+  background-image: url("https://i.ibb.co/Pz3Cp3p/science-fiction.jpg") ; 
+
+  border: 4px solid;
+  border-radius: 10px;
+  margin: 0 auto;
+  height: 50vh;
+  width: 50vw;
+  margin-bottom: 50px;
+}
+
+.heading {
+  font-size: 2.8rem;
+}
+
+.group-name {
+ display: block;
+ font-size: 1.5rem;
+ font-family: poppins,sans-serif;
+ color:rgb(151, 111, 27);
+ margin:5px;
+}
+
+
+.name-label {
+  font-size: 1.25rem;
+}
+
+.name-input {
+  width: 200px;
+  height: 50px;
+  border: 4px solid;
+  border-radius: 15px;
+  text-align: center;  
+  font-family: poppins,sans-serif;
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.name-input:focus {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.start {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.button-style-start {
+  font-family: poppins,sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(212, 209, 209);   
+  background-color: #050607;
+  box-sizing: border-box;  
+  padding: 1.2rem 2.4rem;
+  border-radius: 15px;
+  border: 3px solid ;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.button-style-start:hover {
+  color: black;
+  transform: scale(1.02);
+  background-color: rgb(151, 111, 27);
+}
+
+

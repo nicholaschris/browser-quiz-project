@@ -51,7 +51,7 @@ export const initQuestionPage = () => {
   }
 });
 
-  // Hide the Skip button when an answer is selected
+  // Hide the Skip button when an answer is selected 
   hideSkipButton();
 
     });

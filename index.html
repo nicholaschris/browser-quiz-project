@@ -9,9 +9,19 @@
 
   <body>
     <!-- Put your HTML here -->
-    <div id="user-interface" class="centered"></div>
-
-    <!-- your data -->
+    <div id="user-interface" class="centered">
+      <div class="welcome-page">
+        <class="welcome-section">
+          <h1 class="heading">Experience Challenge><span class="group-name">by Jedi Coders</span></h1>
+        <label for="name" class="name-label">Who are you?</label>
+        <input type="text" id="name" name="name" required class="name-input">
+        </section>
+        <div class="start">
+          <button id="start-quiz-button" class="button-style-start">LET 'S START</button>
+        </div>
+      </div>
+    </div>
+         <!-- your data -->
     <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script> <!-- script for background animation -->
     <script type="module" src="src/app.js"></script>
     <script src="./src/views/patternAnimation.js" defer></script> <!-- 'defer' - load after the primary html has been loaded -->
