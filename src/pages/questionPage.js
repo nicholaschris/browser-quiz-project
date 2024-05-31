@@ -9,7 +9,6 @@ import {
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
-import { createScoreElement } from '../views/scoreView.js'
 
 export const initQuestionPage = (continueQuiz = false) => {
 
@@ -20,10 +19,9 @@ export const initQuestionPage = (continueQuiz = false) => {
   userInterface.innerHTML = '';
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
-  const correctAnswer = currentQuestion.correct
+  const correctAnswer = currentQuestion.correct;
 
   const questionElement = createQuestionElement(currentQuestion.text);
-
   userInterface.appendChild(questionElement);
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
@@ -36,12 +34,10 @@ export const initQuestionPage = (continueQuiz = false) => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
-
-
-
-   const answers = answersListElement.querySelectorAll('button');
+    
+  const answers = answersListElement.querySelectorAll('button');
   answers.forEach(answer => {
-    answer.addEventListener('click', (event) =>{
+    answer.addEventListener('click', (event) => {
       const selectedAnswerKey = event.target.id;
       quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
 
@@ -49,20 +45,24 @@ export const initQuestionPage = (continueQuiz = false) => {
       displayScore()
       saveScore()
 
-
+  // Disable other answers once one is selected
+  answers.forEach(answer => {
+  if (answer.id !== selectedAnswerKey) {
+    answer.disabled = true; // Disable the answer if its id doesn't match the selected answer key
+  }
+});
   // Hide the Skip button when an answer is selected
   hideSkipButton();
-
     });
   });
-
+  
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
 
-    document
-    .getElementById(SKIP_BUTTON_ID) // Add click event for "skip" button
-    .addEventListener('click', skipQuestion); // Call functionality when "skip" button is clicked
+  document
+    .getElementById(SKIP_BUTTON_ID)
+    .addEventListener('click', skipQuestion);
 };
 
    // This function allows the user to skip a question
@@ -71,6 +71,7 @@ export const initQuestionPage = (continueQuiz = false) => {
    const currentQuestion = quizData.questions[quizData.currentQuestionIndex];  
    currentQuestion.skipped = true; // Marks question as skipped
 
+   
   // Highlight the correct answer with green color
   const answers = document.getElementById(ANSWERS_LIST_ID).querySelectorAll('button');
   answers.forEach(answer => {
@@ -103,7 +104,9 @@ export const initQuestionPage = (continueQuiz = false) => {
     quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
   }
   initQuestionPage();
+  calculateScore();
 };
+
 
 const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   const isCorrect = selectedAnswer === correctAnswer;
@@ -117,7 +120,7 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   answers.forEach(answer => {
     if (answer.id === correctAnswer) {
       answer.style.backgroundColor = 'green'; //highlight the correct answer with green
-    } else if (answer.id === selectedAnswer) {
+     } else if (answer.id === selectedAnswer) {
       answer.style.backgroundColor = 'red'; //if the wrong answer was selected - highlight it with red
     } else {
       answer.style.backgroundColor = DEFAULT_ANSWER_COLOR; //set the color of the rest of the buttons to default
