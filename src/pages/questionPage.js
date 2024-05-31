@@ -9,38 +9,47 @@ import {
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
-import { createScoreElement } from '../views/scoreView.js'
 
 export const initQuestionPage = () => {
-  console.log(quizData)
+  console.log(quizData);
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
-  const correctAnswer = currentQuestion.correct
+  const correctAnswer = currentQuestion.correct;
 
   const questionElement = createQuestionElement(currentQuestion.text);
-
   userInterface.appendChild(questionElement);
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
   //create element to show the score
-  const scoreElement = createScoreElement(quizData.currentScore, quizData.questions.length)
-  userInterface.appendChild(scoreElement)
+
+  const scoreElement = document.createElement('h2');
+  scoreElement.id = 'score';
+  scoreElement.textContent = `Score: 0 out of ${quizData.questions.length}`;
+  userInterface.appendChild(scoreElement);
 
 
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
+  
    const answers = answersListElement.querySelectorAll('button');
   answers.forEach(answer => {
-    answer.addEventListener('click', (event) =>{
+    answer.addEventListener('click', (event) => {
       const selectedAnswerKey = event.target.id;
       quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
 
-      checkAnswer(selectedAnswerKey, correctAnswer, answers)
+      checkAnswer(selectedAnswerKey, correctAnswer, answers);
+
+  // Disable other answers once one is selected
+  answers.forEach(answer => {
+  if (answer.id !== selectedAnswerKey) {
+    answer.disabled = true; // Disable the answer if its id doesn't match the selected answer key
+  }
+});
 
   // Hide the Skip button when an answer is selected
   hideSkipButton();
@@ -52,9 +61,9 @@ export const initQuestionPage = () => {
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
 
-    document
-    .getElementById(SKIP_BUTTON_ID) // Add click event for "skip" button
-    .addEventListener('click', skipQuestion); // Call functionality when "skip" button is clicked
+  document
+    .getElementById(SKIP_BUTTON_ID)
+    .addEventListener('click', skipQuestion);
 };
 
    // This function allows the user to skip a question
@@ -63,6 +72,7 @@ export const initQuestionPage = () => {
    const currentQuestion = quizData.questions[quizData.currentQuestionIndex];  
    currentQuestion.skipped = true; // Marks question as skipped
 
+   
   // Highlight the correct answer with green color
   const answers = document.getElementById(ANSWERS_LIST_ID).querySelectorAll('button');
   answers.forEach(answer => {
@@ -95,15 +105,15 @@ export const initQuestionPage = () => {
   }
 
   initQuestionPage();
+  calculateScore();
 };
+
 
 const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   const isCorrect = selectedAnswer === correctAnswer;
 
   if (isCorrect) {
     console.log(`here's the logic if user clicked on correct answer`);
-    quizData.currentScore++
-    displayScore()
   } else {
     console.log(`here's the logic if user clicked on wrong answer`);
   }
@@ -119,6 +129,22 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   })
 };
 
-const displayScore = () => {
-  document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length}`
+// adding a function to calculate the score
+
+const calculateScore = () => {
+  let score = 0
+  let totalScore = quizData.questions.length
+  for (const question of quizData.questions){
+    if(question.selected === question.correct){
+      score++
+    }
+  }
+  displayScore(score, totalScore)
+}
+
+// adding a function to display the score
+
+const displayScore = (score, totalScore) => {
+  const scoreElement = document.getElementById('score')
+  scoreElement.textContent = `Score: ${score} out of ${totalScore}`
 }
