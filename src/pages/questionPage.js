@@ -8,6 +8,7 @@ import {
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
+import { createScoreElement } from '../views/scoreView.js';
 import { quizData } from '../data.js';
 
 export const initQuestionPage = (continueQuiz = false) => {
