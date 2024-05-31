@@ -121,7 +121,7 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   answers.forEach(answer => {
     if (answer.id === correctAnswer) {
       answer.style.backgroundColor = 'green'; //highlight the correct answer with green
-    } else if (answer.id === selectedAnswer) {
+     } else if (answer.id === selectedAnswer) {
       answer.style.backgroundColor = 'red'; //if the wrong answer was selected - highlight it with red
     } else {
       answer.style.backgroundColor = DEFAULT_ANSWER_COLOR; //set the color of the rest of the buttons to default
