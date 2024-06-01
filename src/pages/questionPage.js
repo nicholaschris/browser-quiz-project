@@ -43,7 +43,7 @@ export const initQuestionPage = (continueQuiz = false) => {
     answer.addEventListener('click', (event) => {
       const selectedAnswerKey = event.target.id;
       quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
-
+      answer.disabled = true
       checkAnswer(selectedAnswerKey, correctAnswer, answers)
       displayScore()
       saveScore()
@@ -144,7 +144,6 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
 };
 
 const displayScore = () => {
-  document.getElementById('scoreView').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length - 1}`
   document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length - 1}`
 }
 
