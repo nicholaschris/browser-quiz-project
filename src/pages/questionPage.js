@@ -27,7 +27,8 @@ export const initQuestionPage = () => {
 
   //create element to show the score
   const scoreElement = createScoreElement(quizData.currentScore, quizData.questions.length)
-  userInterface.appendChild(scoreElement)
+  // document.getElementById("score")
+  // userInterface.appendChild(scoreElement)
 
 
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
@@ -35,17 +36,17 @@ export const initQuestionPage = () => {
     answersListElement.appendChild(answerElement);
   }
    const answers = answersListElement.querySelectorAll('button');
-  answers.forEach(answer => {
-    answer.addEventListener('click', (event) =>{
-      const selectedAnswerKey = event.target.id;
-      quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
+    answers.forEach(answer => {
+      answer.addEventListener('click', (event) =>{
+        const selectedAnswerKey = event.target.id;
+        quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
 
-      checkAnswer(selectedAnswerKey, correctAnswer, answers)
+        checkAnswer(selectedAnswerKey, correctAnswer, answers)
 
-  // Hide the Skip button when an answer is selected
-  hideSkipButton();
+    // Hide the Skip button when an answer is selected
+    hideSkipButton();
 
-    });
+      });
   });
 
   document
@@ -67,7 +68,7 @@ export const initQuestionPage = () => {
   const answers = document.getElementById(ANSWERS_LIST_ID).querySelectorAll('button');
   answers.forEach(answer => {
   if (answer.id === currentQuestion.correct) {
-    answer.style.backgroundColor = 'green'; 
+    // answer.style.backgroundColor = 'green';
     answer.disabled = false; // Enable only the correct answer to be clickable
   } else {
     answer.disabled = true; // Disable the clickability of other options
@@ -102,7 +103,7 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
 
   if (isCorrect) {
     console.log(`here's the logic if user clicked on correct answer`);
-    quizData.currentScore++
+    quizData.currentScore++ //increase the score if the answer selected is correct
     displayScore()
   } else {
     console.log(`here's the logic if user clicked on wrong answer`);
@@ -110,15 +111,15 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
 
   answers.forEach(answer => {
     if (answer.id === correctAnswer) {
-      answer.style.backgroundColor = 'green'; //highlight the correct answer with green
+      answer.classList.add('correct'); //highlight the correct answer with green
     } else if (answer.id === selectedAnswer) {
-      answer.style.backgroundColor = 'red'; //if the wrong answer was selected - highlight it with red
+      answer.classList.add('incorrect'); //if the wrong answer was selected - highlight it with red
     } else {
-      answer.style.backgroundColor = DEFAULT_ANSWER_COLOR; //set the color of the rest of the buttons to default
+      answer.classList.remove('correct', 'incorrect');//set the color of the rest of the buttons to default
     }
   })
 };
 
 const displayScore = () => {
-  document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length}`
+  document.getElementById('score').innerText = `🏆 ${quizData.currentScore}/${quizData.questions.length}`
 }

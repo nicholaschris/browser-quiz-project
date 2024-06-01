@@ -1,5 +1,5 @@
 export const createScoreElement = (score, totalScore) => {
-    const element = document.createElement('div')
-    element.innerHTML = String.raw`<h2 id="score"> Score: ${score} out of ${totalScore}</h2>`
+    const element = document.getElementById('score-div')
+    element.innerHTML = String.raw`<p id="score"> 🏆 ${score}/${totalScore}</p>`
     return element 
 }
