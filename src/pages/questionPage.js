@@ -43,7 +43,7 @@ export const initQuestionPage = (continueQuiz = false) => {
     answer.addEventListener('click', (event) => {
       const selectedAnswerKey = event.target.id;
       quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
-
+      answer.disabled = true
       checkAnswer(selectedAnswerKey, correctAnswer, answers)
       displayScore()
       saveScore()
