@@ -8,54 +8,62 @@ import {
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
+import { createScoreElement } from '../views/scoreView.js';
 import { quizData } from '../data.js';
-import { createScoreElement } from '../views/scoreView.js'
 
-export const initQuestionPage = () => {
-  console.log(quizData)
+export const initQuestionPage = (continueQuiz = false) => {
+
+  if(continueQuiz){
+    loadScore()
+  }
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
-  const correctAnswer = currentQuestion.correct
+  const correctAnswer = currentQuestion.correct;
 
   const questionElement = createQuestionElement(currentQuestion.text);
-
   userInterface.appendChild(questionElement);
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
   //create element to show the score
   const scoreElement = createScoreElement(quizData.currentScore, quizData.questions.length)
-  // document.getElementById("score")
-  // userInterface.appendChild(scoreElement)
-
-
+  userInterface.appendChild(scoreElement)
+  
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
-   const answers = answersListElement.querySelectorAll('button');
-    answers.forEach(answer => {
-      answer.addEventListener('click', (event) =>{
-        const selectedAnswerKey = event.target.id;
-        quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
+    
+  const answers = answersListElement.querySelectorAll('button');
+  answers.forEach(answer => {
+    answer.addEventListener('click', (event) => {
+      const selectedAnswerKey = event.target.id;
+      quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
 
-        checkAnswer(selectedAnswerKey, correctAnswer, answers)
+      checkAnswer(selectedAnswerKey, correctAnswer, answers)
+      displayScore()
+      saveScore()
 
-    // Hide the Skip button when an answer is selected
-    hideSkipButton();
-
-      });
+  // Disable other answers once one is selected
+  answers.forEach(answer => {
+  if (answer.id !== selectedAnswerKey) {
+    answer.disabled = true; // Disable the answer if its id doesn't match the selected answer key
+  }
+});
+  // Hide the Skip button when an answer is selected
+  hideSkipButton();
+    });
   });
-
+  
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
 
-    document
-    .getElementById(SKIP_BUTTON_ID) // Add click event for "skip" button
-    .addEventListener('click', skipQuestion); // Call functionality when "skip" button is clicked
+  document
+    .getElementById(SKIP_BUTTON_ID)
+    .addEventListener('click', skipQuestion);
 };
 
    // This function allows the user to skip a question
@@ -64,15 +72,17 @@ export const initQuestionPage = () => {
    const currentQuestion = quizData.questions[quizData.currentQuestionIndex];  
    currentQuestion.skipped = true; // Marks question as skipped
 
+   
   // Highlight the correct answer with green color
   const answers = document.getElementById(ANSWERS_LIST_ID).querySelectorAll('button');
   answers.forEach(answer => {
   if (answer.id === currentQuestion.correct) {
     // answer.style.backgroundColor = 'green';
     answer.disabled = false; // Enable only the correct answer to be clickable
-  } else {
+    } else {
     answer.disabled = true; // Disable the clickability of other options
     }
+   
   });
 
    // Hide the Skip button
@@ -94,26 +104,28 @@ export const initQuestionPage = () => {
   else {
     quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
   }
-
   initQuestionPage();
+  calculateScore();
 };
+
 
 const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   const isCorrect = selectedAnswer === correctAnswer;
 
   if (isCorrect) {
     console.log(`here's the logic if user clicked on correct answer`);
-    quizData.currentScore++ //increase the score if the answer selected is correct
-    displayScore()
+    quizData.currentScore++
   } else {
     console.log(`here's the logic if user clicked on wrong answer`);
   }
-
   answers.forEach(answer => {
     if (answer.id === correctAnswer) {
       answer.classList.add('correct'); //highlight the correct answer with green
     } else if (answer.id === selectedAnswer) {
       answer.classList.add('incorrect'); //if the wrong answer was selected - highlight it with red
+      answer.style.backgroundColor = 'green'; //highlight the correct answer with green
+     } else if (answer.id === selectedAnswer) {
+      answer.style.backgroundColor = 'red'; //if the wrong answer was selected - highlight it with red
     } else {
       answer.classList.remove('correct', 'incorrect');//set the color of the rest of the buttons to default
     }
@@ -121,5 +133,29 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
 };
 
 const displayScore = () => {
-  document.getElementById('score').innerText = `🏆 ${quizData.currentScore}/${quizData.questions.length}`
+  document.getElementById('scoreView').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length}`
+  document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length}`
+}
+
+// save score function
+const saveScore = () => {
+  console.log(quizData.currentScore)
+  localStorage.setItem('quizScore', quizData.currentScore);
+  console.log(quizData.currentScore)
+}
+
+// loadScore function
+const loadScore = () => {
+  quizData.currentScore = parseInt(localStorage.getItem('quizScore'));
+}
+// saveIndex progress
+const saveIndex = () => {
+  // console.log(quizData.currentQuestionIndex)
+  localStorage.setItem('currentIndex', quizData.currentQuestionIndex);
+  // console.log(quizData.currentQuestionIndex)
+}
+
+// loadIndex function
+const loadIndex = () => {
+  quizData.currentScore = parseInt(localStorage.getItem('currentIndex'));
 }
