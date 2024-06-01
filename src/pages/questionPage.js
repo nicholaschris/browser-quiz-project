@@ -12,14 +12,16 @@ import { createScoreElement } from '../views/scoreView.js';
 import { quizData } from '../data.js';
 
 export const initQuestionPage = (continueQuiz = false) => {
-
+  let currentQuestion = null
   if(continueQuiz){
     loadScore()
+    loadIndex()
+    quizData.currentQuestionIndex = loadIndex()
   }
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
-  const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
+  currentQuestion = quizData.questions[quizData.currentQuestionIndex];
   const correctAnswer = currentQuestion.correct;
 
   const questionElement = createQuestionElement(currentQuestion.text);
@@ -45,6 +47,7 @@ export const initQuestionPage = (continueQuiz = false) => {
       checkAnswer(selectedAnswerKey, correctAnswer, answers)
       displayScore()
       saveScore()
+      saveIndex()
 
   // Disable other answers once one is selected
   answers.forEach(answer => {
@@ -97,15 +100,23 @@ export const initQuestionPage = (continueQuiz = false) => {
   }
 };
 
+const hideButtons = () => {
+  const btn = document.getElementById(SKIP_BUTTON_ID)
+  const btn1 = document.getElementById(NEXT_QUESTION_BUTTON_ID)
+    btn.classList.add('hidden')
+    btn1.classList.add('hidden')
+}
+
   const nextQuestion = () => {
   if (quizData.currentQuestionIndex === quizData.questions.length-1){
+    hideButtons()
     console.log("end of quiz") // to do: add the final page for the final score
   }
   else {
     quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
   }
   initQuestionPage();
-  calculateScore();
+  displayScore();
 };
 
 
@@ -130,15 +141,15 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
 };
 
 const displayScore = () => {
-  document.getElementById('scoreView').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length}`
-  document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length}`
+  document.getElementById('scoreView').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length - 1}`
+  document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length - 1}`
 }
 
 // save score function
 const saveScore = () => {
-  console.log(quizData.currentScore)
+  // console.log(quizData.currentScore)
   localStorage.setItem('quizScore', quizData.currentScore);
-  console.log(quizData.currentScore)
+  // console.log(quizData.currentScore)
 }
 
 // loadScore function
@@ -148,11 +159,14 @@ const loadScore = () => {
 // saveIndex progress
 const saveIndex = () => {
   // console.log(quizData.currentQuestionIndex)
-  localStorage.setItem('currentIndex', quizData.currentQuestionIndex);
+  localStorage.setItem('currentIndex', quizData.currentQuestionIndex + 1);
   // console.log(quizData.currentQuestionIndex)
 }
 
 // loadIndex function
 const loadIndex = () => {
-  quizData.currentScore = parseInt(localStorage.getItem('currentIndex'));
+  let questionIndex = quizData.currentScore = parseInt(localStorage.getItem('currentIndex'));
+  console.log(questionIndex)
+  return questionIndex
+  
 }
