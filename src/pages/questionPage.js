@@ -139,9 +139,7 @@ const displayScore = () => {
 
 // save score function
 const saveScore = () => {
-  // console.log(quizData.currentScore)
   localStorage.setItem('quizScore', quizData.currentScore);
-  // console.log(quizData.currentScore)
 }
 
 // loadScore function
@@ -150,9 +148,7 @@ const loadScore = () => {
 }
 // saveIndex progress
 const saveIndex = () => {
-  // console.log(quizData.currentQuestionIndex)
   localStorage.setItem('currentIndex', quizData.currentQuestionIndex + 1);
-  // console.log(quizData.currentQuestionIndex)
 }
 
 // loadIndex function
