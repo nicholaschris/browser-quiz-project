@@ -51,10 +51,9 @@ export const initQuestionPage = (continueQuiz = false) => {
 
   // Disable other answers once one is selected
   answers.forEach(answer => {
-  if (answer.id !== selectedAnswerKey) {
     answer.disabled = true; // Disable the answer if its id doesn't match the selected answer key
   }
-});
+);
   // Hide the Skip button when an answer is selected
   hideSkipButton();
     });
@@ -81,9 +80,7 @@ export const initQuestionPage = (continueQuiz = false) => {
   answers.forEach(answer => {
   if (answer.id === currentQuestion.correct) {
     // answer.style.backgroundColor = 'green';
-    answer.disabled = false; // Enable only the correct answer to be clickable
-    } else {
-    answer.disabled = true; // Disable the clickability of other options
+    answer.disabled = true; // Enable only the correct answer to be clickable
     }
    
   });
@@ -100,16 +97,10 @@ export const initQuestionPage = (continueQuiz = false) => {
   }
 };
 
-const hideButtons = () => {
-  const btn = document.getElementById(SKIP_BUTTON_ID)
-  const btn1 = document.getElementById(NEXT_QUESTION_BUTTON_ID)
-    btn.classList.add('hidden')
-    btn1.classList.add('hidden')
-}
+
 
   const nextQuestion = () => {
   if (quizData.currentQuestionIndex === quizData.questions.length-1){
-    hideButtons()
     console.log("end of quiz") // to do: add the final page for the final score
   }
   else {
@@ -134,7 +125,6 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
       answer.classList.add('correct'); //highlight the correct answer with green
     } else if (answer.id === selectedAnswer) {
       answer.classList.add('incorrect'); //if the wrong answer was selected - highlight it with red
-      answer.style.backgroundColor = 'green'; //highlight the correct answer with green
      } else if (answer.id === selectedAnswer) {
       answer.style.backgroundColor = 'red'; //if the wrong answer was selected - highlight it with red
     } else {
@@ -144,7 +134,6 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
 };
 
 const displayScore = () => {
-  document.getElementById('scoreView').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length - 1}`
   document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length - 1}`
 }
 
