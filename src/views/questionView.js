@@ -15,8 +15,12 @@ export const createQuestionElement = (question) => {
   element.innerHTML = String.raw`
 
     <div id="border-inner-container">
-      <div id="score">
-          🏆score
+      <div>
+      <div></div>
+      <div></div>
+      <div id="score-div">
+<!--          🏆score-->
+      </div>
       </div>
       
       <div id="question-container-row">

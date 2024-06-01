@@ -80,7 +80,7 @@ export const initQuestionPage = (continueQuiz = false) => {
   const answers = document.getElementById(ANSWERS_LIST_ID).querySelectorAll('button');
   answers.forEach(answer => {
   if (answer.id === currentQuestion.correct) {
-    answer.style.backgroundColor = 'green'; 
+    // answer.style.backgroundColor = 'green';
     answer.disabled = false; // Enable only the correct answer to be clickable
     } else {
     answer.disabled = true; // Disable the clickability of other options
@@ -131,11 +131,14 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   }
   answers.forEach(answer => {
     if (answer.id === correctAnswer) {
+      answer.classList.add('correct'); //highlight the correct answer with green
+    } else if (answer.id === selectedAnswer) {
+      answer.classList.add('incorrect'); //if the wrong answer was selected - highlight it with red
       answer.style.backgroundColor = 'green'; //highlight the correct answer with green
      } else if (answer.id === selectedAnswer) {
       answer.style.backgroundColor = 'red'; //if the wrong answer was selected - highlight it with red
     } else {
-      answer.style.backgroundColor = DEFAULT_ANSWER_COLOR; //set the color of the rest of the buttons to default
+      answer.classList.remove('correct', 'incorrect');//set the color of the rest of the buttons to default
     }
   })
 };
