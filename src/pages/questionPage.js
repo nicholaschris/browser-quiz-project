@@ -165,7 +165,7 @@ const saveIndex = () => {
 
 // loadIndex function
 const loadIndex = () => {
-  let questionIndex = quizData.currentScore = parseInt(localStorage.getItem('currentIndex'));
+  let questionIndex = quizData.currentQuestionIndex = parseInt(localStorage.getItem('currentIndex'));
   console.log(questionIndex)
   return questionIndex
   
