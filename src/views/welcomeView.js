@@ -13,8 +13,8 @@ export const createWelcomeElement = () => {
       <input type="text" id="name" name="name" required class="name-input">
     </section>
     <div class="start">
-      <button id="${START_QUIZ_BUTTON_ID}" class="button-style-start">LET 'S START</button>
-      <button id="${CONTINUE_QUIZ_BUTTON_ID}" class="button-style-start">Continue Quiz</button>
+      <button id="${START_QUIZ_BUTTON_ID}" class="action-button">LET 'S START</button>
+      <button id="${CONTINUE_QUIZ_BUTTON_ID}" class="action-button">Continue Quiz</button>
     
     </div>
   `;

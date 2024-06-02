@@ -50,4 +50,3 @@ export const createQuestionElement = (question) => {
   return element;
 };
 
-/*New style ----------------------------------------------------------------------------*/

@@ -31,7 +31,7 @@ export const initQuestionPage = (continueQuiz = false) => {
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
   //create element to show the score
-  const scoreElement = createScoreElement(quizData.currentScore, quizData.questions.length)
+  createScoreElement(quizData.currentScore, quizData.questions.length);
   
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
@@ -78,16 +78,15 @@ export const initQuestionPage = (continueQuiz = false) => {
   // Highlight the correct answer with green color
   const answers = document.getElementById(ANSWERS_LIST_ID).querySelectorAll('button');
   answers.forEach(answer => {
-  if (answer.id === currentQuestion.correct) {
-    // answer.style.backgroundColor = 'green';
-    answer.disabled = true; // Enable only the correct answer to be clickable
+    if (answer.id === currentQuestion.correct) {
+      answer.classList.add('correct');
     }
-   
+    answer.disabled = true;
   });
 
    // Hide the Skip button
    hideSkipButton();
-};
+  };
 
   // Function to hide the Skip button
   const hideSkipButton = () => {
@@ -96,7 +95,6 @@ export const initQuestionPage = (continueQuiz = false) => {
     skipButton.classList.add('hidden');
   }
 };
-
 
 
   const nextQuestion = () => {
@@ -114,11 +112,9 @@ export const initQuestionPage = (continueQuiz = false) => {
 const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   const isCorrect = selectedAnswer === correctAnswer;
   if (isCorrect) {
-    console.log(`here's the logic if user clicked on correct answer`);
-    quizData.currentScore++
-  } else {
-    console.log(`here's the logic if user clicked on wrong answer`);
+    quizData.currentScore++;
   }
+
   answers.forEach(answer => {
     if (answer.id === correctAnswer) {
       answer.classList.add('correct'); //highlight the correct answer with green
@@ -155,3 +151,5 @@ export const loadIndex = () => {
   return questionIndex
   
 }
+
+// TO DO: Merge "Next" and "Skip" buttons
