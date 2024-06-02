@@ -68,7 +68,7 @@ body::before {
 #question-block {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 50rem;
   height: 100%;
   background-color: #C1FF69;
   border-radius: 20px;
