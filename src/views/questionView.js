@@ -2,6 +2,7 @@
 
 
 import { NEXT_QUESTION_BUTTON_ID, QUESTION_DIV_ID, ANSWERS_LIST_ID, SKIP_BUTTON_ID } from '../constants.js';
+import {skipQuestion} from '../pages/questionPage.js'
 
 
 /**
@@ -37,15 +38,14 @@ export const createQuestionElement = (question) => {
       </div>
   
       <div id="button-container-row">
-        <button id="${NEXT_QUESTION_BUTTON_ID}" class="action-button">
-          Next question
-        </button>
         <button id="${SKIP_BUTTON_ID}" class="action-button">
           Skip
         </button>
       </div>
     </div>
   `;
+  // Add event listener for the "Skip" button
+  element.querySelector(`#${SKIP_BUTTON_ID}`).addEventListener('click', skipQuestion);
 
   return element;
 };

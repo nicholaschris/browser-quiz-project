@@ -1,3 +1,5 @@
+//src/views/patternAnimation.js
+
 /*source:
 * https://ryanmulligan.dev/blog/detect-js-support-in-css*/
 

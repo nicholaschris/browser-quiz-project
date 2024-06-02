@@ -1,3 +1,4 @@
+//src/pages/finalPage.js
 import { createFinalPageElement } from '../views/finalPageView.js';
 import { USER_INTERFACE_ID, RESTART_QUIZ_BUTTON_ID } from '../constants.js';
 import { quizData } from '../data.js';

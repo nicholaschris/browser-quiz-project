@@ -12,17 +12,39 @@ import { createScoreElement } from '../views/scoreView.js';
 import { quizData } from '../data.js';
 import { initFinalPage } from './finalPage.js';
 
+
 export const initQuestionPage = (continueQuiz = false) => {
-  let currentQuestion = null
+  // let currentQuestion = null
   if(continueQuiz){
     loadScore()
     loadIndex()
     quizData.currentQuestionIndex = loadIndex()
   }
+
+  /*---------------------------------------------------------------------------------------------*/
+  let currentQuestionIndex = quizData.currentQuestionIndex;
+
+  console.log('Current Question Index:', currentQuestionIndex); // Debugging log
+  if (currentQuestionIndex < 0 || currentQuestionIndex >= quizData.questions.length) {
+    console.error('Invalid question index:', currentQuestionIndex); // Debugging log
+    return;
+  }
+
+  let currentQuestion = quizData.questions[currentQuestionIndex];
+
+  if (!currentQuestion) {
+    console.error('Question not found:', currentQuestionIndex); // Debugging log
+    return;
+  }
+
+  console.log('Current Question:', currentQuestion); // Debugging log
+
+  /*---------------------------------------------------------------------------------------------*/
+
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
-  currentQuestion = quizData.questions[quizData.currentQuestionIndex];
+
   const correctAnswer = currentQuestion.correct;
 
   const questionElement = createQuestionElement(currentQuestion.text);
@@ -37,12 +59,13 @@ export const initQuestionPage = (continueQuiz = false) => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
+
     
   const answers = answersListElement.querySelectorAll('button');
   answers.forEach(answer => {
     answer.addEventListener('click', (event) => {
       const selectedAnswerKey = event.target.id;
-      quizData.questions[quizData.currentQuestionIndex].selected = selectedAnswerKey;
+      currentQuestion.selected = selectedAnswerKey;
       answer.disabled = true
       checkAnswer(selectedAnswerKey, correctAnswer, answers)
       displayScore()
@@ -55,27 +78,30 @@ export const initQuestionPage = (continueQuiz = false) => {
   }
 );
   // Hide the Skip button when an answer is selected
-  hideSkipButton();
+  // hideSkipButton();
+      transformButtonToNext();
     });
   });
-  
-  document
-    .getElementById(NEXT_QUESTION_BUTTON_ID)
-    .addEventListener('click', nextQuestion);
+};
 
-  document
-    .getElementById(SKIP_BUTTON_ID)
-    .addEventListener('click', skipQuestion);
+const nextQuestion = () => {
+  if (quizData.currentQuestionIndex === quizData.questions.length-1){
+    initFinalPage();
+  } else {
+    quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
+    initQuestionPage();
+  }
+  // displayScore();
 };
 
    // This function allows the user to skip a question
-  const skipQuestion = () => {
+  export const skipQuestion = () => {
   // To remove the question from scoring when you skip it  
-   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];  
-   currentQuestion.skipped = true; // Marks question as skipped
+  const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
+   // currentQuestion.skipped = true; // Marks question as skipped
 
    
-  // Highlight the correct answer with green color
+  // Highlight the correct answer with green color and disable the answer buttons
   const answers = document.getElementById(ANSWERS_LIST_ID).querySelectorAll('button');
   answers.forEach(answer => {
     if (answer.id === currentQuestion.correct) {
@@ -84,9 +110,16 @@ export const initQuestionPage = (continueQuiz = false) => {
     answer.disabled = true;
   });
 
+
+    saveIndex();
+
    // Hide the Skip button
-   hideSkipButton();
+   // hideSkipButton();
+    transformButtonToNext(); // Call this to change the button to "Next"
   };
+
+
+
 
   // Function to hide the Skip button
   const hideSkipButton = () => {
@@ -96,17 +129,11 @@ export const initQuestionPage = (continueQuiz = false) => {
   }
 };
 
+export const displayScore = () => {
+  document.getElementById('score').innerText = `🏆 ${quizData.currentScore}/${quizData.questions.length}`
+}
 
-  const nextQuestion = () => {
-  if (quizData.currentQuestionIndex === quizData.questions.length-1){
-    initFinalPage();
-  }
-  else {
-    quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
-    initQuestionPage();
-  }
-  displayScore();
-};
+
 
 
 const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
@@ -115,20 +142,20 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
     quizData.currentScore++;
   }
 
+  displayCorrectAnswer(selectedAnswer, correctAnswer, answers);
+};
+
+
+const displayCorrectAnswer = (selectedAnswer, correctAnswer, answers) => {
   answers.forEach(answer => {
     if (answer.id === correctAnswer) {
       answer.classList.add('correct'); //highlight the correct answer with green
     } else if (answer.id === selectedAnswer) {
       answer.classList.add('incorrect'); //if the wrong answer was selected - highlight it with red
-     } else {
+    } else {
       answer.classList.remove('correct', 'incorrect');//set the color of the rest of the buttons to default
     }
-  })
-};
-
-
-export const displayScore = () => {
-  document.getElementById('score').innerText = `🏆 ${quizData.currentScore}/${quizData.questions.length}`
+  });
 }
 
 // save score function
@@ -152,4 +179,18 @@ export const loadIndex = () => {
   
 }
 
-// TO DO: Merge "Next" and "Skip" buttons
+const transformButtonToNext = () => {
+  const button = document.getElementById(SKIP_BUTTON_ID);
+  button.id = NEXT_QUESTION_BUTTON_ID;
+  button.textContent = "Next";
+  button.removeEventListener('click', skipQuestion);
+  button.addEventListener('click', nextQuestion);
+}
+
+const transformButtonToSkip = () => {
+  const button = document.getElementById(NEXT_QUESTION_BUTTON_ID);
+  button.id = SKIP_BUTTON_ID;
+  button.textContent = "Skip";
+  button.removeEventListener('click', nextQuestion);
+  button.addEventListener('click', skipQuestion);
+}
