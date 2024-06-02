@@ -14,7 +14,7 @@ export const createAnswerElement = (key, answerText) => {
   //   btn.style.backgroundColor = `#B76E79`;
   // })
   btn.innerHTML = String.raw`
-    ${key}: ${answerText};
+    ${answerText}
   `;
   return element;
 };
