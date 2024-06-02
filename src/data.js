@@ -140,14 +140,6 @@ export const quizData = {
       selected: null,
       links: [
       ],
-    },{
-      text: 'Congratulations you have completed the quiz',
-      answers: {
-      },
-      correct: null,
-      selected: null,
-      links: [
-      ],
-    },
+    }
   ],
 };

@@ -8,8 +8,8 @@ export const createWelcomeElement = () => {
   element.classList.add("welcome-page");
   element.innerHTML = String.raw`
     <section class="welcome-section">
-      <h1 class="heading">Experience Challenge<span class="group-name">by Jedi Coders</span></h1>
-      <label for="name" class="name-label">Who are you?</label>
+      <h1 class="heading">Welcome to the The Jedi Trials<span class="group-name">by The Jedi Coders</span></h1>
+      <label for="name" class="name-label">What is your name Padawan?</label>
       <input type="text" id="name" name="name" required class="name-input">
     </section>
     <div class="start">
