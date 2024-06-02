@@ -31,7 +31,7 @@ export const initQuestionPage = (continueQuiz = false) => {
 
   //create element to show the score
   const scoreElement = createScoreElement(quizData.currentScore, quizData.questions.length)
-  userInterface.appendChild(scoreElement)
+  // userInterface.appendChild(scoreElement)
   
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
@@ -125,16 +125,14 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
       answer.classList.add('correct'); //highlight the correct answer with green
     } else if (answer.id === selectedAnswer) {
       answer.classList.add('incorrect'); //if the wrong answer was selected - highlight it with red
-     } else if (answer.id === selectedAnswer) {
-      answer.style.backgroundColor = 'red'; //if the wrong answer was selected - highlight it with red
-    } else {
+     } else {
       answer.classList.remove('correct', 'incorrect');//set the color of the rest of the buttons to default
     }
   })
 };
 
 const displayScore = () => {
-  document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length - 1}`
+  document.getElementById('score').innerText = `🏆 ${quizData.currentScore}/${quizData.questions.length}`
 }
 
 // save score function

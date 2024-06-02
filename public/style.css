@@ -180,6 +180,7 @@ body::before {
 }
 
 .heading {
+  color: #C1FF69;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 2.8rem;
 }
@@ -188,7 +189,7 @@ body::before {
  display: block;
  font-size: 1.5rem;
  font-family: poppins,sans-serif;
- color:rgb(151, 111, 27);
+ color: #C1FF69;
  margin:5px;
 }
 
