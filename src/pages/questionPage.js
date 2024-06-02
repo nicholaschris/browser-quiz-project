@@ -10,6 +10,7 @@ import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { createScoreElement } from '../views/scoreView.js';
 import { quizData } from '../data.js';
+import { initFinalPage } from './finalPage.js';
 
 export const initQuestionPage = (continueQuiz = false) => {
   let currentQuestion = null
@@ -102,11 +103,13 @@ export const initQuestionPage = (continueQuiz = false) => {
   const nextQuestion = () => {
   if (quizData.currentQuestionIndex === quizData.questions.length-1){
     console.log("end of quiz") // to do: add the final page for the final score
+    initFinalPage();
   }
   else {
     quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
+    initQuestionPage();
   }
-  initQuestionPage();
+  
   displayScore();
 };
 
@@ -133,8 +136,8 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   })
 };
 
-const displayScore = () => {
-  document.getElementById('score').innerText = `Score: ${quizData.currentScore} out of ${quizData.questions.length - 1}`
+export const displayScore = () => {
+  document.getElementById('score').innerText = `🏆 ${quizData.currentScore}/${quizData.questions.length}`
 }
 
 // save score function
@@ -143,7 +146,7 @@ const saveScore = () => {
 }
 
 // loadScore function
-const loadScore = () => {
+export const loadScore = () => {
   quizData.currentScore = parseInt(localStorage.getItem('quizScore'));
 }
 // saveIndex progress
@@ -152,7 +155,7 @@ const saveIndex = () => {
 }
 
 // loadIndex function
-const loadIndex = () => {
+export const loadIndex = () => {
   let questionIndex = quizData.currentQuestionIndex = parseInt(localStorage.getItem('currentIndex'));
   console.log(questionIndex)
   return questionIndex
