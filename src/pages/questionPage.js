@@ -32,7 +32,6 @@ export const initQuestionPage = (continueQuiz = false) => {
 
   //create element to show the score
   const scoreElement = createScoreElement(quizData.currentScore, quizData.questions.length)
-  userInterface.appendChild(scoreElement)
   
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
@@ -102,21 +101,18 @@ export const initQuestionPage = (continueQuiz = false) => {
 
   const nextQuestion = () => {
   if (quizData.currentQuestionIndex === quizData.questions.length-1){
-    console.log("end of quiz") // to do: add the final page for the final score
     initFinalPage();
   }
   else {
     quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
     initQuestionPage();
   }
-  
   displayScore();
 };
 
 
 const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
   const isCorrect = selectedAnswer === correctAnswer;
-
   if (isCorrect) {
     console.log(`here's the logic if user clicked on correct answer`);
     quizData.currentScore++
@@ -128,13 +124,12 @@ const checkAnswer = (selectedAnswer, correctAnswer, answers) => {
       answer.classList.add('correct'); //highlight the correct answer with green
     } else if (answer.id === selectedAnswer) {
       answer.classList.add('incorrect'); //if the wrong answer was selected - highlight it with red
-     } else if (answer.id === selectedAnswer) {
-      answer.style.backgroundColor = 'red'; //if the wrong answer was selected - highlight it with red
-    } else {
+     } else {
       answer.classList.remove('correct', 'incorrect');//set the color of the rest of the buttons to default
     }
   })
 };
+
 
 export const displayScore = () => {
   document.getElementById('score').innerText = `🏆 ${quizData.currentScore}/${quizData.questions.length}`
@@ -157,7 +152,6 @@ const saveIndex = () => {
 // loadIndex function
 export const loadIndex = () => {
   let questionIndex = quizData.currentQuestionIndex = parseInt(localStorage.getItem('currentIndex'));
-  console.log(questionIndex)
   return questionIndex
   
 }
