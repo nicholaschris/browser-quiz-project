@@ -9,6 +9,7 @@ body {
 
 h1 {
   margin: 0;
+  letter-spacing: 2px;
 }
 
 h2 {
@@ -147,14 +148,15 @@ body::before {
   justify-content:center;
   font-family: 'Death Star', sans-serif;
   margin-top: 0;
-  color: #FFE81F;
+  color: #C1FF69;
+  letter-spacing: 2px;
 }
 #finalScore {
   display: flex;
   justify-content: center;
   font-family: 'Open Sans', sans-serif;
   margin-top: 0;
-  color: #FFE81F;
+  color: #C1FF69;
 }
 
 /*Navigation buttons styling----------------------------------------------------------------------*/

@@ -1,3 +1,4 @@
+//src/views/welcomeView.js
 import { START_QUIZ_BUTTON_ID, CONTINUE_QUIZ_BUTTON_ID } from '../constants.js';
 /**
  * Create the welcome screen

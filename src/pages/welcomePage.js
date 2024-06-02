@@ -1,3 +1,4 @@
+//src/pages/welcomePage.js
 import { USER_INTERFACE_ID, START_QUIZ_BUTTON_ID, CONTINUE_QUIZ_BUTTON_ID } from '../constants.js';
 import { createWelcomeElement } from '../views/welcomeView.js';
 import { initQuestionPage } from './questionPage.js';
